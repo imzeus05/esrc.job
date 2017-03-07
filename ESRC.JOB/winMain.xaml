@@ -1,0 +1,6 @@
+﻿<NavigationWindow x:Class="ESRC.JOB.winMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="영화배우 오디션"
+        Source="pageWeb.xaml">
+</NavigationWindow>
