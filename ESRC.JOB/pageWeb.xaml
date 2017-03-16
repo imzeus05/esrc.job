@@ -9,7 +9,27 @@
       Loaded="Page_Loaded">
 
     <Grid>
-        <WebBrowser x:Name="myBrowser" Cursor="Arrow" Navigating="myBrowser_Navigating" />
-        <TextBlock><Run Text="심박수"/></TextBlock>
+        <WebBrowser x:Name="myBrowser" Navigating="myBrowser_Navigating" Navigated="myBrowser_Navigated" />
+        <Popup IsOpen="True"
+              AllowsTransparency="True"
+              Grid.RowSpan="99"
+              Grid.ColumnSpan="99"
+              Placement="Absolute"
+              Width="{Binding ActualWidth,
+                              ElementName=myBrowser,
+                              Mode=OneWay}"
+              Height="{Binding ActualHeight, 
+                               ElementName=myBrowser,
+                               Mode=OneWay}"
+              PlacementTarget="{Binding ElementName=myBrowser}"
+              Opacity="0.7"
+              Margin="3">
+            <Grid>
+                <Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,600,280" Width="40" Height="40" Loaded="Image_Loaded"/>
+                <Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,600,230" Width="40" Height="40" Loaded="Image_Loaded_1"/>
+                <TextBlock Text="심장: 85" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,550,290"></TextBlock>
+                <TextBlock Text="웹캠: 88" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,550,240"></TextBlock>
+            </Grid>
+        </Popup>        
     </Grid>
 </Page>
