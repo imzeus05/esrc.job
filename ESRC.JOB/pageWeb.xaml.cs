@@ -32,7 +32,7 @@ namespace ESRC.JOB
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.WindowState = WindowState.Maximized;
-            myBrowser.Navigate(new Uri("http://www.social-eq.co.kr/movie/login.do"));
+            myBrowser.Navigate(new Uri("http://www.social-eq.co.kr/movie/intro.do"));
 
         }
 
