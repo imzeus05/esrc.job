@@ -54,17 +54,24 @@ namespace ESRC.JOB
                 txtCam.Opacity = 0;
                 txtPpg.Opacity = 0;
             }
+
+            if (e.Uri.ToString() == "http://www.social-eq.co.kr/movie/ot.do")
+            {
+                mshtml.IHTMLDocument3 document = (mshtml.IHTMLDocument3)myBrowser.Document;
+                var user_email = document.getElementsByName("user_email")
+                                .OfType<IHTMLElement>()
+                                .Select(element => element.getAttribute("value"))
+                                .FirstOrDefault();
+
+                MessageBox.Show("현재 사용자 : " + user_email);
+            }
+
         }
 
         private void myBrowser_Navigated(object sender, NavigationEventArgs e)
         {
-            //mshtml.IHTMLDocument3 document = (mshtml.IHTMLDocument3)myBrowser.Document;
-            //var user_email = document.getElementsByName("login_email")
-            //                .OfType<IHTMLElement>()
-            //                .Select(element => element.getAttribute("value"))
-            //                .FirstOrDefault();
-
-            //MessageBox.Show("현재 사용자 : " + user_email);
+            
+            
 
 
             //var document = myBrowser.Document as mshtml.HTMLDocument;

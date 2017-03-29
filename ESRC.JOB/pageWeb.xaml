@@ -9,7 +9,7 @@
       Loaded="Page_Loaded" >
 
     <Grid>
-        <WebBrowser x:Name="myBrowser" Navigating="myBrowser_Navigating" Navigated="myBrowser_Navigated"  />
+        <WebBrowser x:Name="myBrowser" Navigating="myBrowser_Navigating" Navigated="myBrowser_Navigated"/>
         <Popup IsOpen="True"
               AllowsTransparency="True"
               Grid.RowSpan="1"
