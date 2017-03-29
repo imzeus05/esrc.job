@@ -6,29 +6,23 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="pageWeb"
-      Loaded="Page_Loaded">
+      Loaded="Page_Loaded" >
 
     <Grid>
-        <WebBrowser x:Name="myBrowser" Navigating="myBrowser_Navigating" Navigated="myBrowser_Navigated" />
+        <WebBrowser x:Name="myBrowser" Navigating="myBrowser_Navigating" Navigated="myBrowser_Navigated"  />
         <Popup IsOpen="True"
               AllowsTransparency="True"
-              Grid.RowSpan="99"
-              Grid.ColumnSpan="99"
+              Grid.RowSpan="1"
+              Grid.ColumnSpan="1"
               Placement="Absolute"
-              Width="{Binding ActualWidth,
-                              ElementName=myBrowser,
-                              Mode=OneWay}"
-              Height="{Binding ActualHeight, 
-                               ElementName=myBrowser,
-                               Mode=OneWay}"
               PlacementTarget="{Binding ElementName=myBrowser}"
-              Opacity="0.7"
-              Margin="3">
-            <Grid>
-                <Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,600,280" Width="40" Height="40" Loaded="Image_Loaded"/>
-                <Image HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,600,230" Width="40" Height="40" Loaded="Image_Loaded_1"/>
-                <TextBlock Text="심장: 85" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,550,290"></TextBlock>
-                <TextBlock Text="웹캠: 88" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,550,240"></TextBlock>
+              Opacity="0.1"
+              Margin="3" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Image x:Name="imgPpg" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1120,240,0,0" Width="40" Height="40" Loaded="Image_Loaded" Opacity="0"/>
+                <Image Name="imgCam" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1320,240,0,0" Width="40" Height="40" Loaded="Image_Loaded_1" Opacity="0"/>
+                <TextBlock x:Name="txtPpg" Text="심장: 85" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1170,250,0,0" Opacity="0"></TextBlock>
+                <TextBlock Name="txtCam" Text="웹캠: 88" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1370,250,0,0" Opacity="0"></TextBlock>
             </Grid>
         </Popup>        
     </Grid>

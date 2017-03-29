@@ -40,9 +40,19 @@ namespace ESRC.JOB
         {
             //MessageBox.Show("현재 URL : " + e.Uri.ToString());
                         
-            if (e.Uri.ToString() == "http://www.social-eq.co.kr/movie/testft_start.do")
+            if (e.Uri.ToString() == "http://www.social-eq.co.kr/movie/audition1.do")
             {
-                NavigationService.Navigate(new Uri("pageLocal.xaml", UriKind.Relative));
+                imgCam.Opacity = 1;
+                imgPpg.Opacity = 1;
+                txtCam.Opacity = 1;
+                txtPpg.Opacity = 1;
+            }
+            else if (e.Uri.ToString() == "http://www.social-eq.co.kr/movie/result.do")
+            {
+                imgCam.Opacity = 0;
+                imgPpg.Opacity = 0;
+                txtCam.Opacity = 0;
+                txtPpg.Opacity = 0;
             }
         }
 
@@ -61,7 +71,7 @@ namespace ESRC.JOB
             //var inputs = document.getElementsByTagName("input");
             //MessageBox.Show(document.title);
             
-            
+             
                         
          
         }
