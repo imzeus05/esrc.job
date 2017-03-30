@@ -25,12 +25,6 @@ namespace ESRC.JOB
         public winMain()
         {
             InitializeComponent();
-            //this.ShowsNavigationUI = false;
-            //this.ResizeMode = ResizeMode.NoResize;
-
-            //Uri iconUri = new Uri(@"pack://application:img\favicon.ico", UriKind.RelativeOrAbsolute);
-            //this.Icon = BitmapFrame.Create(iconUri);
-
         }
     }
 }
