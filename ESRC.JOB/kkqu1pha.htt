@@ -15,11 +15,51 @@ using System.Windows.Shapes;
 
 using mshtml;
 using System.Text.RegularExpressions;
+using System.Security.Permissions;
 using System.Runtime.InteropServices;
 
 namespace ESRC.JOB
 {
-    
+
+    [ComVisible(true)]
+    [InterfaceType(ComInterfaceType.InterfaceIsIDispatch)]
+    public interface IWpfCall
+    {
+        void Fn_Call();
+    }
+
+    [ComVisible(true)]
+    [InterfaceType(ComInterfaceType.InterfaceIsIDispatch)]
+    public interface IWpfCallObject
+    {
+        IWpfCall pageWeb { get; }
+    }
+
+    [ComVisible(true)]
+    [ClassInterface(ClassInterfaceType.None)]
+    [ComDefaultInterface(typeof(IWpfCallObject))]
+    public class WpfCallObject : IWpfCallObject
+    {
+        readonly pageWeb _wpfcall = new pageWeb();
+
+        public IWpfCall WpfCall
+        {
+            get { return _wpfcall; }
+        }
+    }
+
+    [ComVisible(true)]
+    public class pageWeb : IWpfCall
+    {
+        public void Fn_Call()
+        {
+            MessageBox.Show("dd");
+        }
+    }
+
+
+
+
     /// <summary>
     /// pageWeb.xaml에 대한 상호 작용 논리
     /// </summary>
@@ -27,51 +67,22 @@ namespace ESRC.JOB
     //[ComVisibleAttribute(true)]
     public partial class pageWeb : Page
     {
-        // This nested class must be ComVisible for the JavaScript to be able to call it.
-        [ComVisible(true)]
-        public class ScriptManager
-        {
-            // Variable to store the form of type Form1.
-            private pageWeb mForm;
-
-            // Constructor.
-            public ScriptManager(pageWeb form)
-            {
-                // Save the form so it can be referenced later.
-                mForm = form;
-            }
-
-            // This method can be called from JavaScript.
-            public void MethodToCallFromScript(object obj)
-            {
-                // Call a method on the form.
-                mForm.Fn_Call(obj.ToString());
-            }
-
-            // This method can also be called from JavaScript.
-            public void AnotherMethod(string message)
-            {
-                MessageBox.Show(message);
-            }
-        }
-
-
-        private static string prefixURL = "http://localhost:8099/prj/movie/";
-        //private static string prefixURL = "http://www.social-eq.co.kr/movie/";
-
         public pageWeb()
         {
             InitializeComponent();
         }
 
+        private static string prefixURL = "http://localhost:8099/prj/movie/";
+        //private static string prefixURL = "http://www.social-eq.co.kr/movie/";
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
 
-            //myBrowser.ObjectForScripting = this; // 이 라인이 굉장히 중요!!!
-            //myBrowser.ObjectForScripting = new WpfCallObject();
-            myBrowser.ObjectForScripting = new ScriptManager(this);
-
             myBrowser.Navigate(new Uri(prefixURL + "intro.do"));
+
+            //myBrowser.ObjectForScripting = this; // 이 라인이 굉장히 중요!!!
+            myBrowser.ObjectForScripting = new WpfCallObject();
+            
 
         }
 
@@ -150,11 +161,11 @@ namespace ESRC.JOB
             image.Source = b;
         }
 
-
-        public void Fn_Call(object message)
-        {
-            MessageBox.Show(message.ToString());
-        }
+        
+        //public void Fn_Call(object str)
+        //{
+        //    MessageBox.Show(str.ToString());
+        //}
         
     }
 }
